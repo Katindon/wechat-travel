@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Document</title>
+	<style>
+		*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+input{
+	-webkit-appearance:none;
+	opacity: 0;
+	z-index: 3;
+}
+
+span{
+	z-index: 1;
+}
+ input,span{
+	width: 20%;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	background-color: hotpink;
+	list-style: none;
+	display:inline-block;
+	cursor:pointer;
+	position: fixed;
+	bottom: 0px;
+	
+}
+
+#radio-1{
+	left: 0%;
+}
+#radio-2{
+	left: 20%;
+}
+#radio-3{
+	left: 40%;
+}
+#radio-4{
+	left: 60%;
+}
+#radio-5{
+	left: 80%;
+}
+span:nth-of-type(1){
+	left: 0%;
+}
+span:nth-of-type(2){
+	left: 20%;
+}
+span:nth-of-type(3){
+	left: 40%;
+}
+span:nth-of-type(4){
+	left: 60%;
+}
+span:nth-of-type(5){
+	left: 80%;
+}
+
+input:hover{
+	background-color: red;
+	opacity: 0.2;
+}
+
+
+.main{
+	width: 500%;
+	height: 100%;
+	-webkit-transform:translate3d(0,0,0);
+	-moz-transform:translate3d(0,0,0);
+	-o-transform:translate3d(0,0,0);
+	-ms-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	
+}
+.main li{
+	width: 20%;
+	height: 100%;
+	list-style: none;
+	display:inline-block;
+}
+.main li img{
+	width: 100%;
+	height: 100%;
+}
+input:checked + span:after{
+	content: "";
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border:20px solid transparent;
+	border-bottom-color:hotpink;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -20px;
+}
+
+#radio-1:checked ~ .main{
+	-webkit-transform:translateX(0%);
+	-moz-transform:translateX(0%);
+	-o-transform:translateX(0%);
+	-ms-transform:translateX(0%);
+	transform:translateX(0%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-2:checked ~ .main{
+	-webkit-transform:translateX(-20%);
+	-moz-transform:translateX(-20%);
+	-o-transform:translateX(-20%);
+	-ms-transform:translateX(-20%);
+	transform:translateX(-20%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-3:checked ~ .main{
+	-webkit-transform:translateX(-40%);
+	-moz-transform:translateX(-40%);
+	-o-transform:translateX(-40%);
+	-ms-transform:translateX(-40%);
+	transform:translateX(-40%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-4:checked ~ .main{
+	-webkit-transform:translateX(-60%);
+	-moz-transform:translateX(-60%);
+	-o-transform:translateX(-60%);
+	-ms-transform:translateX(-60%);
+	transform:translateX(-60%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-5:checked ~ .main{
+	-webkit-transform:translateX(-80%);
+	-moz-transform:translateX(-80%);
+	-o-transform:translateX(-80%);
+	-ms-transform:translateX(-80%);
+	transform:translateX(-80%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+
+/*轮播图样式*/
+#content{
+	width: 60%;
+	height: 600px;
+	position: fixed;
+	top:10%;
+	left:20%;	
+	overflow: hidden;
+}
+#slider{
+		width: 100%;
+		height: 600px;
+		overflow: hidden;	
+	}
+    #list{
+    	width: 500%;
+    	height: 600px;
+    }
+    img{
+		width: 20%;
+		height: 600px;
+		list-style: none;
+		display:inline-block;
+	}
+
+	#switch{
+		width: 60%;
+		height: 50px;
+		position: fixed;
+		left:20%;
+		top:400px;
+
+	}
+	#prev{
+		width: 40px;
+		height:40px;
+		float:left;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/forward.png?raw=true);
+	}
+	#next{
+		width: 40px;
+		height:40px;
+		float:right;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/backward.png?raw=true);
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+				<input type="radio" name="radio-set" value="Jinx" id="radio-1">
+				<span>Jinx</span>
+				<input type="radio" name="radio-set" value="Ashe" id="radio-2">
+				<span>Ashe</span>
+				<input type="radio" name="radio-set" value="Lux" id="radio-3">
+				<span>Lux</span>
+				<input type="radio" name="radio-set" value="Timo" id="radio-4">
+				<span>Timo</span>	
+				<input type="radio" name="radio-set" value="Lulu" id="radio-5">
+				<span>Lulu</span>
+		<ul class="main">
+			<li>
+				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt="">
+			</li><li>
+				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true" alt="">
+			</li><li>
+				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true" alt="">
+			</li><li>
+				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true" alt="">
+			</li><li>
+				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt="">
+			</li>
+		</ul>
+	</div>
+	<!-- 轮播图 -->
+	<div id="content">
+	<div id="slider">
+		<div id="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true alt="">
+		</div>
+	</div>
+	<div id="switch">
+		<a href="javascript:;" id="prev"></a>
+		<a href="javascript:;" id="next"></a>
+	</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	 window.onload = function() {
+            var list = document.getElementById('list');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+     		var x = 0;
+     		
+	 	// 下一张函数
+        next.onclick = function() { 
+        	x=x+20;
+        	if(x==100){
+	 			x=0;
+	 		}   
+       	 	list.style.transform="translateX(-"+x+"%)" ;
+               
+            }
+         // 上一张函数
+        prev.onclick = function() {
+        	x=x-20;
+        	if(x==-20){
+	 			x=80;
+	 		} 
+            list.style.transform="translateX(-"+x+"%)" ;
+        }
+         // 自动播放  
+        function autoplay(){
+      	setInterval(function(){
+	 		x=x+20;
+	 		if(x==100){
+	 			x=0;
+	 		}
+	 		list.style.transform="translateX(-"+x+"%)" ;
+	 	},2000);	
+      	}
+	 	autoplay();
+	 	// 停止计时器
+	 }
+	
+
+</script>
+</html>
