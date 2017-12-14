@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	 <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="x5-fullscreen" content="true">
 	<title>Document</title>
 	<style>
 		*{
@@ -181,7 +184,7 @@ input:checked + span:after{
 /*轮播图样式*/
 #content{
 	width: 60%;
-	height: 600px;
+	height: 60%;
 	position: fixed;
 	top:10%;
 	left:20%;	
@@ -189,45 +192,47 @@ input:checked + span:after{
 }
 #slider{
 		width: 100%;
-		height: 600px;
+		height: 100%;
 		overflow: hidden;	
 	}
     #list{
     	width: 500%;
-    	height: 600px;
+    	height: 100%;
     }
     img{
 		width: 20%;
-		height: 600px;
+		height: 100%;
 		list-style: none;
 		display:inline-block;
 	}
 
 	#switch{
 		width: 60%;
-		height: 50px;
+		height: 30px;
 		position: fixed;
 		left:20%;
-		top:400px;
+		top:35%;
 
 	}
 	#prev{
-		width: 40px;
-		height:40px;
+		width: 30px;
+		height:30px;
 		float:left;
 		cursor:pointer;
 		background: none;
 		border:none;
 		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/forward.png?raw=true);
+		background-size: cover;
 	}
 	#next{
-		width: 40px;
-		height:40px;
+		width: 30px;
+		height:30px;
 		float:right;
 		cursor:pointer;
 		background: none;
 		border:none;
 		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/backward.png?raw=true);
+		background-size: cover;
 	}
 	</style>
 </head>
@@ -245,15 +250,15 @@ input:checked + span:after{
 				<span>Lulu</span>
 		<ul class="main">
 			<li>
-				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt="">
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt="">
 			</li><li>
-				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true" alt="">
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true" alt="">
 			</li><li>
-				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true" alt="">
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true" alt="">
 			</li><li>
-				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true" alt="">
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true" alt="">
 			</li><li>
-				<img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt="">
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt="">
 			</li>
 		</ul>
 	</div>
