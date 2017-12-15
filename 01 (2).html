@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	 <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="x5-fullscreen" content="true">
+	<title>Document</title>
+<style>
+		*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border--box;
+}
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+/*定义盒子渐显动画开始*/
+@-webkit-keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 0.25;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	75%{
+		opacity: 0.75;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@-moz-keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 0.25;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	75%{
+		opacity: 0.75;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@-o-keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 0.25;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	75%{
+		opacity: 0.75;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@keyframes fadeIn{
+	0%{
+		opacity: 0;
+	}
+	25%{
+		opacity: 0.25;
+	}
+	50%{
+		opacity: 0.5;
+	}
+	75%{
+		opacity: 0.75;
+	}
+	100%{
+		opacity: 1;
+	}
+}/*定义盒子渐显动画结束*/
+/*轮播图样式*/
+#content1,#content2,#content3,#content4,#content5{
+	width: 60%;
+	height: 60%;
+	position: fixed;
+	top:10%;
+	left:20%;	
+	overflow: hidden;
+	-webkit-animation:fadeIn;
+	-webkit-animation-duration:2s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-delay:0s;
+	-moz-animation:fadeIn;
+	-moz-animation-duration:2s;
+	-moz-animation-iteration-count:1;
+	-moz-animation-delay:0s;
+	-o-animation:fadeIn;
+	-o-animation-duration:2s;
+	-o-animation-iteration-count:1;
+	-o-animation-delay:0s;
+	-ms-animation:fadeIn;
+	-ms-animation-duration:2s;
+	-ms-animation-iteration-count:1;
+	-ms-animation-delay:0s;
+	animation:fadeIn;
+	animation-duration:2s;
+	animation-iteration-count:1;
+	animation-delay:0s;
+}
+#content1{
+	visibility:visible;
+}
+#content2,#content3,#content4,#content5{
+	visibility:hidden;
+}
+.slider{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;	
+	}
+    .list{
+    	width: 500%;
+    	height: 100%;
+    }
+    img{
+		width: 20%;
+		height: 100%;
+		list-style: none;
+		display:inline-block;
+	}
+
+	#switch{
+		width: 60%;
+		height: 30px;
+		position: fixed;
+		left:20%;
+		top:35%;
+
+	}
+	#prev{
+		width: 30px;
+		height:30px;
+		float:left;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/forward.png?raw=true);
+		background-size: cover;
+	}
+	#next{
+		width: 30px;
+		height:30px;
+		float:right;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/backward.png?raw=true);
+		background-size: cover;
+	}
+
+	/*平滑切换背景样式开始*/
+.container{
+	width: 100%;
+	height: 100%;
+}
+input{
+	-webkit-appearance:none;
+	opacity: 0;
+	z-index: 3;
+}
+
+span{
+	z-index: 1;
+}
+ input,span{
+	width: 20%;
+	height: 30px;
+	color: #fff;
+	text-align: center;
+	background-color: hotpink;
+	list-style: none;
+	display:inline-block;
+	cursor:pointer;
+	position: fixed;
+	bottom: 0px;
+	
+}
+
+#radio-1{
+	left: 0%;
+}
+#radio-2{
+	left: 20%;
+}
+#radio-3{
+	left: 40%;
+}
+#radio-4{
+	left: 60%;
+}
+#radio-5{
+	left: 80%;
+}
+span:nth-of-type(1){
+	left: 0%;
+}
+span:nth-of-type(2){
+	left: 20%;
+}
+span:nth-of-type(3){
+	left: 40%;
+}
+span:nth-of-type(4){
+	left: 60%;
+}
+span:nth-of-type(5){
+	left: 80%;
+}
+
+input:hover{
+	background-color: red;
+	opacity: 0.2;
+}
+
+
+.main{
+	width: 500%;
+	height: 100%;
+	-webkit-transform:translate3d(0,0,0);
+	-moz-transform:translate3d(0,0,0);
+	-o-transform:translate3d(0,0,0);
+	-ms-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	
+}
+.main li{
+	width: 20%;
+	height: 100%;
+	list-style: none;
+	display:inline-block;
+}
+.main li img{
+	width: 100%;
+	height: 100%;
+}
+input:checked + span:after{
+	content: "";
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border:20px solid transparent;
+	border-bottom-color:hotpink;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -20px;
+}
+/*按钮选定事件*/
+#radio-1:checked ~ .main{
+	-webkit-transform:translateX(0%);
+	-moz-transform:translateX(0%);
+	-o-transform:translateX(0%);
+	-ms-transform:translateX(0%);
+	transform:translateX(0%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+
+#radio-2:checked ~ .main{
+	-webkit-transform:translateX(-20%);
+	-moz-transform:translateX(-20%);
+	-o-transform:translateX(-20%);
+	-ms-transform:translateX(-20%);
+	transform:translateX(-20%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-3:checked ~ .main{
+	-webkit-transform:translateX(-40%);
+	-moz-transform:translateX(-40%);
+	-o-transform:translateX(-40%);
+	-ms-transform:translateX(-40%);
+	transform:translateX(-40%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-4:checked ~ .main{
+	-webkit-transform:translateX(-60%);
+	-moz-transform:translateX(-60%);
+	-o-transform:translateX(-60%);
+	-ms-transform:translateX(-60%);
+	transform:translateX(-60%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#radio-5:checked ~ .main{
+	-webkit-transform:translateX(-80%);
+	-moz-transform:translateX(-80%);
+	-o-transform:translateX(-80%);
+	-ms-transform:translateX(-80%);
+	transform:translateX(-80%);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition:all 5s ease-in-out;
+	-moz-transition:all 5s ease-in-out;
+	-o-transition:all 5s ease-in-out;
+	-ms-transition:all 5s ease-in-out;
+	transition:all 5s ease-in-out;
+}
+#go{
+	width: 100px;
+	height: 30px;
+	color:#fff;
+	background: hotpink;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 30px;
+	position: fixed;
+	bottom: 15%;
+	left:50%;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 3px 3px 1px #999;
+	transform: translateX(-50%);
+}
+#musicid{
+	position: fixed;
+	top:0%;
+	right: 0%;
+	background-color: #333; 
+	opacity: 0.5;
+}
+</style>
+</head>
+<body>
+	<!-- 平滑切换背景部分 -->
+	<div class="container">
+				<input type="radio" name="radio-set" value="Jinx" id="radio-1">
+				<span>Jinx</span>
+				<input type="radio" name="radio-set" value="Ashe" id="radio-2">
+				<span>Ashe</span>
+				<input type="radio" name="radio-set" value="Lux" id="radio-3">
+				<span>Lux</span>
+				<input type="radio" name="radio-set" value="Timo" id="radio-4">
+				<span>Timo</span>	
+				<input type="radio" name="radio-set" value="Lulu" id="radio-5">
+				<span>Lulu</span>
+		<ul class="main">
+			<li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt="">
+			</li>
+		</ul>
+	</div>
+	<!-- 轮播图1 -->
+	<div id="content1">
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true alt="">
+		</div>
+	</div>
+	</div>
+	<!-- 轮播图2 -->
+	<div id="content2">
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true alt="">
+		</div>
+	</div>
+	</div>
+	<!-- 轮播图3 -->
+	<div id="content3">
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true alt="">
+		</div>
+	</div>
+	</div>
+	<!-- 轮播图4 -->
+	<div id="content4">
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true alt="">
+		</div>
+	</div>
+	</div>
+	<!-- 轮播图5 -->
+	<div id="content5">
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true alt=""><img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true alt=""><img src=https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true alt="">
+		</div>
+	</div>
+	</div>
+	<div id="switch">
+		<a href="javascript:;" id="prev"></a>
+		<a href="javascript:;" id="next"></a>
+	</div>
+	<bottom id="go" onclick="go()">前往下一站</bottom>
+	<audio id="musicid" src="https://github.com/Katindon/wechat-travel/blob/master/lux.mp3?raw=true" preload="preload" autoplay="autoplay" loop="loop" controls="yes">您的浏览器不支持 audio标签。</audio>
+</body>
+
+<script type="text/javascript">
+	 window.onload = function() {
+            var list = document.getElementsByClassName('list');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var slider = document.getElementsByClassName('slider');
+            var timer;
+     		var x = 0;
+   	
+	 
+	 	// 下一张函数
+        next.onclick = function() { 
+        	x=x+20;
+        	if(x==100){//向右移动百分之一百时跳回第一张，实现无缝切换
+	 			x=0;
+	 		} 
+	 		var i; 
+	 		for (var i = 0; i < list.length; i++) {//遍历所有的图片列表
+	 			list[i].style.transform="translateX(-"+x+"%)" ;
+	 		}   
+            }
+         // 上一张函数
+        prev.onclick = function() {
+        	x=x-20;
+        	if(x==-20){//向右移动百分之二十时跳到最后一张，实现无缝切换
+	 			x=80;
+	 		} 
+	 		var i; 
+	 		for (var i = 0; i < list.length; i++) {//遍历所有的图片列表
+	 			list[i].style.transform="translateX(-"+x+"%)" ;
+	 		} 
+        }
+       
+     	
+        // 自动播放  
+        function autoplay(){
+      	timer = setInterval(function(){
+	 		x=x+20;
+	 		if(x==100){
+	 			x=0;
+	 		}
+	 		for (var i = 0; i < list.length; i++){//遍历所有的图片列表
+	 			list[i].style.transform="translateX(-"+x+"%)" ;
+	 		} 	
+	 	},2000);	
+      	}
+      	// 鼠标悬停停止
+        slider[0].onmouseover = function(){
+        	clearInterval(timer);
+        }
+        slider[0].onmouseout = autoplay;
+        slider[1].onmouseover = function(){
+        	clearInterval(timer);
+        }
+        slider[1].onmouseout = autoplay;
+        slider[2].onmouseover = function(){
+        	clearInterval(timer);
+        }
+        slider[2].onmouseout = autoplay;
+        slider[3].onmouseover = function(){
+        	clearInterval(timer);
+        }
+        slider[3].onmouseout = autoplay;
+        slider[4].onmouseover = function(){
+        	clearInterval(timer);
+        }
+        slider[4].onmouseout = autoplay;
+        autoplay();
+        //div的显示和隐藏
+        function go(){}
+
+		}
+		
+</script>
+</html>
