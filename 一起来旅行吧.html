@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	 <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-app-capable" content="yes">
+    <meta name="x5-fullscreen" content="true">
+	<title>Document</title>
+<style>
+		*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.contentbox{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0%;
+	z-index: 1;
+	
+}
+.content{
+	width: 50%;
+	height: 65%;
+	position: fixed;
+	top:12%;
+	left:25%;	
+	overflow: hidden;
+}
+
+.word{
+	height: 22%;
+	width: 100%;
+	color: #fff;
+}
+.title{
+	font-size: medium;
+	font-weight: 800;
+}
+.description{
+	font-size: small;
+	font-weight: 600;
+}
+.slider{
+		width: 100%;
+		height: 78%;
+		box-sizing: border-box;
+		border:5px solid #fff;
+		overflow: hidden;	
+	}
+    .list{
+    	width: 500%;
+    	height: 100%;
+    }
+ .list  img{
+		width: 20%;
+		height: 100%;
+		float:left;
+		list-style: none;
+		display:inline-block;
+	}
+
+	#switch{
+		width: 57%;
+		height: 30px;
+		position: fixed;
+		left:21.5%;
+		/*transform: translateX(0px);*/
+		top:45%;
+		z-index: 1;
+	}
+	#prev{
+		width: 30px;
+		height:30px;
+		float:left;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/forward.png?raw=true);
+		background-size: cover;
+	}
+	#next{
+		width: 30px;
+		height:30px;
+		float:right;
+		cursor:pointer;
+		background: none;
+		border:none;
+		background-image: url(https://github.com/Katindon/wechat-travel/blob/master/backward.png?raw=true);
+		background-size: cover;
+	}
+
+	/*平滑切换背景样式开始*/
+.container{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+
+#main{
+	width: 600%;
+	height: 100%;
+	-webkit-transform:translate3d(0,0,0);
+	-moz-transform:translate3d(0,0,0);
+	-o-transform:translate3d(0,0,0);
+	-ms-transform:translate3d(0,0,0);
+	transform:translate3d(0,0,0);
+	
+}
+#main li{
+	width: 16.66%;
+	height: 100%;
+	list-style: none;
+	display:inline-block;
+}
+#main li img{
+	width: 100%;
+	height: 100%;
+}
+
+#go{
+	width: 100px;
+	height: 30px;
+	color:#fff;
+	background: hotpink;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 30px;
+	position: fixed;
+	bottom: 13%;
+	left:50%;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 3px 3px 1px #999;
+	transform: translateX(-50%);
+	z-index: 2;
+}
+#musicid{
+	position: fixed;
+	width: 14%;
+	top:2%;
+	right: 2%;
+	background-color: #333; 
+	opacity: 0.5;
+	z-index: 3;
+}
+#car{
+	width: 20%;
+	height:73%;
+	transform: translateX(-50%);
+	position: fixed;
+	left:50%;
+	bottom: -19%;
+	
+}
+#car img{
+	width: 100%;
+	height: 100%;
+	transform: rotate(-90deg);
+}
+#wheel{
+	width: 30%;
+	height: 13%;
+	position: fixed;
+	left:50.2%;
+	transform: translateX(-50%);
+	bottom: 4.2%
+}
+#wheel img{
+	width: 22.8%;
+	height: 92%;
+	margin-top: 2.5%;
+}
+#no2{
+	float:right;
+}
+#road{
+	display: block;
+	width: 100%;
+	position: fixed;
+	bottom: 0%;
+}
+</style>
+</head>
+<body>
+	<!-- 平滑切换背景部分 -->
+	<div class="container">		
+		<ul id="main">
+			<li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li><li>
+				<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			</li>
+		</ul>
+	</div>
+	<!-- 轮播图1 -->
+	<div class="contentbox" style='visibility: visible;'>
+	<div class="content" >
+		<div class="list"></div>
+	</div>
+	</div>
+	<div class="contentbox">
+	<div class="content" >
+		<div class="word">
+			<p class="title">请输入标题1</p><p class="description">请输入描述</p><p class="description">请输入描述</p>
+		</div>
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg1.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg2.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg3.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg4.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg5.jpg?raw=true" alt="">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- 轮播图2 -->
+	<div class="contentbox">
+	<div class="content">
+		<div class="word">
+			<p class="title">请输入标题2</p><p class="description">请输入描述</p><p class="description">请输入描述</p>
+		</div>
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg6.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg7.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg8.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg9.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg10.jpg?raw=true" alt="">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- 轮播图3 -->
+	<div class="contentbox">
+	<div class="content">
+		<div class="word">
+			<p class="title">请输入标题3</p><p class="description">请输入描述</p><p class="description">请输入描述</p>
+		</div>
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg11.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg12.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg13.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg14.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg15.jpg?raw=true" alt="">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- 轮播图4 -->
+	<div class="contentbox">
+	<div class="content">
+		<div class="word">
+			<p class="title">请输入标题4</p><p class="description">请输入描述</p><p class="description">请输入描述</p>
+		</div>
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg16.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg17.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg18.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg19.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg20.jpg?raw=true" alt="">
+		</div>
+	</div>
+	</div>
+	</div>
+	<!-- 轮播图5 -->
+	<div class="contentbox">
+	<div class="content">
+		<div class="word">
+			<p class="title">请输入标题5</p><p class="description">请输入描述</p><p class="description">请输入描述</p>
+		</div>
+	<div class="slider">
+		<div class="list">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg21.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg22.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg23.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg24.jpg?raw=true" alt="">
+			<img src="https://github.com/Katindon/wechat-travel/blob/master/bg25.jpg?raw=true" alt="">
+		</div>
+	</div>
+	</div>
+	</div>
+	<div id="switch">
+		<a href="javascript:;" id="prev"></a>
+		<a href="javascript:;" id="next"></a>
+	</div>
+	<div>
+		<img id="road" src="https://github.com/Katindon/wechat-travel/blob/master/road1.jpg?raw=true" alt="">
+	</div>
+	<div id="car">
+		<img src="https://github.com/Katindon/wechat-travel/blob/master/car.png?raw=true" alt="">
+	</div>
+	
+	<div id="wheel">
+		<img class="wheel" src="https://github.com/Katindon/wechat-travel/blob/master/wheel.png?raw=true" alt="">
+		<img class="wheel" id="no2" src="https://github.com/Katindon/wechat-travel/blob/master/wheel.png?raw=true" alt="">
+	</div>
+	<botton	id="go">开始</botton>
+	<audio id="musicid" src="https://github.com/Katindon/wechat-travel/blob/master/lux.mp3?raw=true"  autoplay="autoplay" loop="loop" controls="true">您的浏览器不支持 audio标签。</audio>
+</body>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.9.0/jquery.js" ></script>
+<script type="text/javascript" >
+	//判断屏幕方向	
+	if(window.orientation==0||window.orientation==180){
+    alert("请旋转手机屏幕至横屏观看(#^.^#)")
+}
+ 	//监听屏幕方向
+
+window.onorientationchange = function(){ 
+    switch(window.orientation){     
+        case 0: 
+        case 180: 
+             alert("请旋转手机屏幕至横屏观看(#^.^#)")
+        break; 
+    } 
+} 
+
+	 window.onload = function() {
+            var list = document.getElementsByClassName('list');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var slider = document.getElementsByClassName('slider');
+            var go = document.getElementById('go');
+       		var bg = document.getElementById('main');
+        	var box=document.getElementsByClassName("contentbox");
+        	var wheel=document.getElementsByClassName('wheel');
+        	var car=document.getElementById('car');
+        	var road=document.getElementById('road');
+            var timer;
+     		var x = 0;
+   	        var b = 0;
+   	        var c = 5400;
+	        var a = 0,b = 0,time,d=0;
+
+
+
+	        $(".contentbox").hide();
+	         $(".contentbox:eq(0)").fadeIn(2000);
+	         $('#switch').hide();
+if(window.orientation==90||window.orientation==-90){
+    console.log("横屏状态！")
+}
+	        // 鼠标悬停停止
+	    // prev.onmouseover = function(){//左按钮
+     //    	clearInterval(timer);
+     //    }
+     //    prev.onmouseout = autoplay;
+
+     //    next.onmouseover = function(){//右按钮
+     //    	clearInterval(timer);
+     //    }
+     //    next.onmouseout = autoplay;
+     //    //轮播图
+     //    slider[0].onmouseover = function(){
+     //    	clearInterval(timer);
+     //    }
+     //    slider[0].onmouseout = autoplay;
+     //    slider[1].onmouseover = function(){
+     //    	clearInterval(timer);
+     //    }
+     //    slider[1].onmouseout = autoplay;
+     //    slider[2].onmouseover = function(){
+     //    	clearInterval(timer);
+     //    }
+     //    slider[2].onmouseout = autoplay;
+     //    slider[3].onmouseover = function(){
+     //    	clearInterval(timer);
+     //    }
+     //    slider[3].onmouseout = autoplay;
+     //    slider[4].onmouseover = function(){
+     //    	clearInterval(timer);
+     //    }
+     //    slider[4].onmouseout = autoplay;
+     //    timer = setInterval(zidong,2000);	
+        // // 下一张函数
+        next.onclick = function() { 
+        	x=x+20;
+        	if(x==100){//向右移动百分之一百时跳回第一张，实现无缝切换
+	 			x=0;
+	 		} 
+	 		var i; 
+	 			list[a].style.transform="translateX(-"+x+"%)" ; 
+            }
+         // 上一张函数
+        prev.onclick = function() {
+        	x=x-20;
+        	if(x<=-20){//向右移动百分之二十时跳到最后一张，实现无缝切换
+	 			x=80;
+	 		} 
+	 		var i; 
+	 		for (var i = 0; i < list.length; i++) {//遍历所有的图片列表
+	 			list[a].style.transform="translateX(-"+x+"%)" ; 
+	 		} 
+        }
+       
+     	
+        // 自动播放  
+    //     function autoplay(){
+    //   	timer = setInterval(zidong,2000);	
+    //   	}
+    //     function zidong(){
+	 		// x=x+20;
+	 		// if(x==100){
+	 		// 	x=0;
+	 		// }
+	 		// 	list[a].style.transform="translateX(-"+x+"%)" ;
+
+    //     }
+        //div的显示和隐藏
+        go.onclick=function(){
+        	b=b+16.66;
+        	if(b>99){//向右移动百分之一百时跳回第一张，实现无缝切换
+	 			b=16.66;
+	 		}
+				bg.style.transform="translateX(-"+b+"%)" ;
+	 			wheel[0].style.transform="rotate(5400deg)";
+	 			wheel[1].style.transform="rotate(5400deg)";
+	 			wheel[0].style.transition="all 5s ease-in-out";
+	 			wheel[1].style.transition="all 5s ease-in-out";
+	 			bg.style.transition="all 5s ease-in-out";
+	 			hide()
+	 			box[a].style.visibility="hidden"			
+				$('#switch').show();
+	 			$('#go').html('前往下一站');
+	 			clearInterval(timer);
+	 			
+	 			a++
+	 			
+	 			if(a>=6){
+	 				a=0
+	 				$('#go').html('开始');
+	 				$('#switch').hide();
+	 				$('.contentbox').css('background-color','transparent');
+	 				box[0].style.visibility="visible";
+	 				timer = setInterval(shwo,5000);
+	 				$('#wheel').hide();
+	 				$('#car').hide();
+	 			}
+	 			else if(a>=5){
+	 				$('#go').html('结束');
+	 				box[a].style.visibility="visible";
+	 				timer = setInterval(shwo,5000);
+	 				$('.contentbox').css('background-color','rgba(0,0,0,.6)');
+	 				wheel[0].style.transform="rotate(21600deg)";
+	 				wheel[1].style.transform="rotate(21600deg)";
+	 				wheel[0].style.transition="all 5s ease-in-out";
+	 				wheel[1].style.transition="all 5s ease-in-out";
+	 			}
+	 			else{
+	 				c = c+5400;
+	 				box[a].style.visibility="visible";
+	 				timer = setInterval(shwo,5000);
+	 				$('.contentbox').css('background-color','rgba(0,0,0,.6)');
+	 				wheel[0].style.transform="rotate("+c+"deg)";
+	 				wheel[1].style.transform="rotate("+c+"deg)";
+	 				wheel[0].style.transition="all 5s ease-in-out";
+	 				wheel[1].style.transition="all 5s ease-in-out";
+	 			}
+	 			
+        }
+        function shwo(){
+        	$(".contentbox:eq("+a+")").fadeIn(2000);
+        	car.style.opacity=0.7;
+        	road.style.opacity=0.7;
+        	next.style.opacity=1;
+        	prev.style.opacity=1;
+        	
+        }
+	 	function hide(){
+	 		$(".contentbox:eq("+a+")").fadeOut(1000);
+	 		car.style.opacity=1;
+        	road.style.opacity=1;
+        	next.style.opacity=0;
+        	prev.style.opacity=0;
+	 	}
+		}
+	
+</script>
+</html>
